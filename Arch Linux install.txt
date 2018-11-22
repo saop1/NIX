@@ -1,0 +1,82 @@
+//arch install on 250 Gig root/home partition + swap parition using ATI videocard and just for an example Gnome
+//load your keymap in my case; loadkeys no-latin1
+
+// PARTITIONING
+
+fdisk -l //find your disk with fdisk -l
+
+fdisk /dev/sd*
+
+n //We'll make our first partition write; "+234G"
+
+a //this will make it bootable; if you cant make it bootable we will come back to this
+
+n //this will be our swap partition on 8 Gigs write; "+8G"
+
+t // you need to choose swap use "L" to check out the list of codes
+
+//now you have your paritions and if everything worked press "w" to write these changes, but if "a" didnt work for you earlier go into expert mode with "x" and then write a large "A" you need to choose the first partition and then press "r" to exit expert mode
+w // to write these partitions
+fdisk -l // to see the changes
+
+
+mkswap /dev/sd*2
+swapon /dev/sd*2
+mkfs.ext4 /dev/sd*1
+
+mount /dev/sd*1 /mnt
+mkdir /mnt/boot
+mkdir /mnt/home
+
+pacstrap /mnt base base-devel
+
+genfstab -p /mnt >> /mnt/etc/fstab
+
+arch-chroot /mnt
+
+echo YOURHOSTNAME > /etc/hostname
+
+locale-gen //setup your locale-gen, I normally dont do it because of reasonsss
+
+mkinitcpio -p linux
+
+passwd //setup your root password
+
+pacman -S grub
+
+grub-install --target=i386-pc --debug --force /dev/sd*
+
+grub-mkconfig -o /boot/grub/grub.cfg
+
+exit
+
+umount -R /mnt
+
+reboot
+
+login as: root
+password: //write your password
+
+//SETUP NETWORK CONNECTIONS
+
+ifconfig //choose your interface mine is enp3s0
+cd /etc/netctl
+cp examples/ethernet-dhcp .
+mv ethernet-dhcp enp3s0
+nano enp3s0
+
+change Interface=eth0 to Interface=enp3s0 in nano
+use CTRL+X and save it
+
+cd
+netctl start enp3s0
+netctl enable enp3s0
+
+//add your user here with the "useradd" command
+//put your new user in /etc/sudoers so you can use sudo when logged into the new user
+
+//DOWNLOAD DRIVERS AND PACKAGES YOU NEED
+
+pacman -S xf86-video-ati xf86-video-ati xorg-server xorg-server-utils xorg-apps xorg-xinit gnome gnome-extra gdm
+
+systemctl enable gdm.service
