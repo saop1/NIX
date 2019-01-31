@@ -1,0 +1,91 @@
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+VISUAL=vim; export VISUAL EDITOR=vim; export EDITOR
+
+function cd() { command cd "$1" && ls; }
+
+
+
+alias ls='ls --color=auto'
+PS1='\W  '
+
+#cd
+alias scripts='cd /home/jan/Documents/scripts'
+
+#ok
+alias ok='sh .screenlayout/good.sh'
+alias team='teamviewer --daemon start && teamviewer '
+#time
+alias d='date'
+
+# pacman
+alias S='sudo pacman -S'
+alias Syu='sudo pacman -Syu'
+alias Rs='sudo pacman -Rs'
+
+# bashrc
+alias brup='. ~/.bashrc'
+alias br='vim ~/.bashrc'
+
+# ls
+alias la='ls -al'
+alias l='ls -l'
+
+# Configs
+alias ni3='nano ~/.config/i3/config'
+alias vimi3='vim ~/.config/i3/config'
+
+
+# archey
+alias a3='archey3'
+
+# fstab
+alias gofs='sudo vim /etc/fstab'
+
+# cding
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+
+alias scr='cd /home/jan/Documents/scripts/testings'
+
+#mp3
+alias mp3='youtube-dl --extract-audio --audio-format mp3'
+
+#scripts
+
+TS=/home/jan/Documents/scripts/testings/use
+
+#docs
+alias doc="$TS/document.sh"
+
+#network
+alias netw="sh $TS/networkscan.sh"
+
+#backup scripts
+
+alias bashbackup="sh $TS/bashrcbackup.sh"
+alias sd="sh $TS/sd.sh"
+alias docbackup="sh $TS/docbackup.sh"
+alias xinitbackup="sh $TS/newxinitbackup.sh"
+alias usebackup="sh $TS/usebackup.sh"
+
+#lyd
+alias lyd='pavucontrol'
+
+#job scripts
+
+alias p="sh $TS/printer.sh"
+alias ja="sh $TS/learn.sh"
+alias remote='quickrdp &'
+alias printer='system-config-printer &'
+
+#kek
+alias whereisjan="sh /home/jan/Documents/scripts/testings/1.sh"
+alias nano='vim'

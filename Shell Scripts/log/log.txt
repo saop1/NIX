@@ -1,0 +1,17 @@
+
+GHOST JAM
+Hvis skriveren sier at den er fastkjørt, men den er ikke så må du vaske rolleren med "special" vaskemiddel som du finner med CDene.
+
+
+Kjøp av ny lader
+Scan i scanner og mail til lidvard så kast fysiske dokumentet(striml)
+
+
+Lokal Administrator på plattform PC
+Behandling > Lokale Brukere og Grupper > brukere > administrator; høgre klikk og lag et passord
+
+
+Fjerne Lokal Administrator på plattform PC
+Behandling > Lokale Brukere og Grupper > brukere > adminstrator; høgre klikk og deaktiver brukeren
+
+
