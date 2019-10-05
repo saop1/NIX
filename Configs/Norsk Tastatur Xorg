@@ -1,4 +1,4 @@
-1. sudo touch /etc/X11/xorg.conf.d/00-keyboard.conf && vim /etc/X11/xorg.conf.d/00-keyboard.conf
+1. sudo touch /etc/X11/xorg.conf.d/00-keyboard.conf && sudo vim /etc/X11/xorg.conf.d/00-keyboard.conf
 
 2. Import the following configuration:
 
