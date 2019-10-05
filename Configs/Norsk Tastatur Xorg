@@ -1,6 +1,6 @@
 1. sudo touch /etc/X11/xorg.conf.d/00-keyboard.conf && vim /etc/X11/xorg.conf.d/00-keyboard.conf
 
-2. Import following configuration:
+2. Import the following configuration:
 
 Section "InputClass"
         Identifier "system-keyboard"
